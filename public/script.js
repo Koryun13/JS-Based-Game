@@ -24,7 +24,7 @@ function setup() {
     matrix = genMatrix(w, h);
     createCanvas(side * w, side * h);
     background("#acacac");
-    frameRate(5);
+    frameRate(10);
     for(var y in matrix) {
         for(var x in matrix[y]) {
             if(matrix[y][x] == 1) {
@@ -62,6 +62,7 @@ function draw() {
 
     for(var i in grassArr) {
         grassArr[i].mul();
+        
     }
 
     for(var i in xotakerArr) {

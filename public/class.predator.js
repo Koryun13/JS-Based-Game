@@ -5,18 +5,10 @@ class Gishatich extends Animal {
         this.energy = Math.round(Math.random() * 16);
         this.speed = 24;
         this.multiply = Math.round(Math.random() * 16);
-
+        matrix[this.y][this.x] = this.index;
     }
     
-    yntrelVandak(){
-
-    }
-   
-    stanalNorKordinatner(){
-        
-    }
-
-    sharjvel() {
+  sharjvel() {
         var vand = random(this.yntrelVandak(0));
         if (vand && this.multiply >= this.speed / 2) {
             this.energy--;

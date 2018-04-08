@@ -5,19 +5,9 @@ class Xotaker extends Animal {
          this.energy = Math.round(Math.random() * 8);
          this.multiply = Math.round(Math.random() * 8);
          this.speed = 8;
+         matrix[this.y][this.x] = this.index;
     }
     
-    
-
-
-    yntrelVandak(ch){
-
-    }
-    
-    stanalNorKordinatner(){
-        
-    }
-
     sharjvel() {
         var vand = random(this.yntrelVandak(0));
         if (vand && this.multiply >= this.speed / 4) {

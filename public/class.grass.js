@@ -3,12 +3,11 @@ class Grass extends Animal {
         super(x, y, index);
         this.multiply = Math.round(Math.random() * 8);
         this.speed = 8;
+        matrix[this.y][this.x] = this.index;
         
 
     }
-    yntrelVandak(){
-        
-    }
+
 
     mul() {
         this.multiply++;
