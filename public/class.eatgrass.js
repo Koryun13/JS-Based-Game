@@ -1,4 +1,6 @@
-class Xotaker extends Animal {
+var Animal = require('./public/Animal.js'); 
+ 
+module.exports = class Xotaker extends Animal {
    
     constructor(x, y, index) {
          super(x, y, index);

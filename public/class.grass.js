@@ -1,4 +1,6 @@
-class Grass extends Animal {
+ var Animal = require('./public/Animal.js'); 
+  
+ module.exports = class Grass extends Animal {
       constructor(x, y, index)  { 
         super(x, y, index);
         this.multiply = Math.round(Math.random() * 8);

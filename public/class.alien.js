@@ -1,4 +1,6 @@
-class Alien extends Animal {
+var Animal = require('./public/Animal.js'); 
+ 
+module.exports = class Alien extends Animal {
 
     constructor(x, y, index) {
 
@@ -10,7 +12,7 @@ class Alien extends Animal {
         this.numbers = [1, 2, 3];
     }
 
-    yntrelVandak(ch) {
+     yntrelVandak(ch) {
         var found = [];
         for (var i in this.directions) {
             var x = this.directions[i][0];
@@ -29,13 +31,13 @@ class Alien extends Animal {
                 this.energy--;
                 matrix[this.y][this.x] = 0;
                 this.x = vand[0]; this.y = vand[1];
-                matrix[this.y][this.x] = 3;
+                matrix[this.y][this.x] = 4;
             }
         }
 
         utel() {
             this.energy--;
-            var num = random(this.numbers);
+            var num =  random(1,4);
             var vand = random(this.yntrelVandak(num));
             if (vand && this.multiply >= this.speed / 2) {
                 this.energy += this.speed / 2;
@@ -80,7 +82,7 @@ class Alien extends Animal {
         }
 
         mahanal() {
-            if (this.energy <= -(this.speed / 4)) {
+            if (this.energy <= -(this.speed )) {
                 matrix[this.y][this.x] = 0;
                 for (var i in alienArr) {
                     if (alienArr[i].x == this.x && alienArr[i].y == this.y) {

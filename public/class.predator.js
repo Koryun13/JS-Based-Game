@@ -1,4 +1,4 @@
-class Gishatich extends Animal {
+module.exports = class Gishatich extends Animal {
     constructor(x, y, index) {
        
         super(x, y, index);
