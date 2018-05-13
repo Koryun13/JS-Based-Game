@@ -1,4 +1,4 @@
-var Animal = require('./public/Animal.js'); 
+Animal = require('./animal'); 
  
 module.exports = class Alien extends Animal {
 
@@ -9,7 +9,7 @@ module.exports = class Alien extends Animal {
         this.speed = 24;
         this.multiply = Math.round(Math.random() * 20);
         matrix[this.y][this.x] = this.index;
-        this.numbers = [1, 2, 3];
+        
     }
 
      yntrelVandak(ch) {

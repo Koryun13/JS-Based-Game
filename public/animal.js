@@ -1,4 +1,4 @@
-class Animal {
+ module.exports = class Animal {
 
 
  constructor(x, y, index) {

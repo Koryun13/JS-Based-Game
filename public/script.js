@@ -1,18 +1,22 @@
-var socket = io.connect('http://localhost:3000');
 
+var socket = io.connect('http://localhost:5000');
 
 var matrix;
 var w = 30;
 var h = 30;
 var side = 24;
-var grassArr = [], xotakerArr = [], gishatichArr = [], alienArr = [];
+// var grassArr = [], xotakerArr = [], gishatichArr = [], alienArr = [];
 
 function setup() {
-    
-  socket.on('send matrix',function(data) { 
-        var matrix = data;
-});
+    createCanvas(side * w, side * h);
+    background("#acacac");
+    frameRate(10);
  
+  socket.on('send matrix',function(data) { 
+         matrix = data;
+       
+});
+
 }
 function draw() {
     background("#acacac");
@@ -40,3 +44,5 @@ function draw() {
     
 
 }
+
+

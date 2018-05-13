@@ -1,3 +1,4 @@
+ Animal = require('./animal'); 
 module.exports = class Gishatich extends Animal {
     constructor(x, y, index) {
        
