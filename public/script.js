@@ -10,7 +10,7 @@ var side = 24;
 function setup() {
     createCanvas(side * w, side * h);
     background("#acacac");
-    frameRate(10);
+  //  frameRate(10);
  
   socket.on('send matrix',function(data) { 
          matrix = data;
@@ -26,23 +26,34 @@ function draw() {
                 fill("#acacac");
             }
             else if(matrix[y][x] == 1) {
-                fill("green");
+                fill("#007f00");
+            }
+            else if(matrix[y][x] == 1.5) {
+                fill("#00ff00");
             }
             else if(matrix[y][x] == 2) {
-                fill("yellow");
+                fill("#7f7f00");
+            }
+            else if(matrix[y][x] == 2.5) {
+                fill("#e5e500");
             }
             else if(matrix[y][x] == 3) {
-                fill("red");
+                fill("#7f0000");
+            }
+            else if(matrix[y][x] == 3.5) {
+                fill("#e50000");
             }
             else if(matrix[y][x] == 4){
                 fill("black ");
             }
+            
             rect(x * side, y * side, side, side);
         }
-
+        
     }
     
-
+    
+    
 }
 
 

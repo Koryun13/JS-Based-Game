@@ -44,12 +44,12 @@ function genMatrix(w, h) {
         matrix1[y] = [];
         for(var x = 0; x < w; x++) {
              r = Math.floor(Math.random()*101);
-            var n = Math.round(Math.random());
-            if     (r < 20) r = 0;
-            else if(r < 65) r = 1/n;
-            else if(r < 85) r = 2/n;
-            else if(r < 95) r = 3/n;
-            else if(r < 100)r = 4/n;
+            var n = (Math.round(Math.random()))/2;
+            if     (r < 60) r = 0;
+            else if(r < 70) r = 1 + n
+            else if(r < 80) r = 2 + n;
+            else if(r < 90) r = 3 + n;
+            else if(r < 100)r = 4 + n;
             matrix1[y][x] = r;
         }
     }
@@ -66,11 +66,20 @@ setInterval( function() {
             if(matrix[y][x] == 1) {
                 grassArr.push(new Grass(x*1, y*1, 1,matrix[x][y]));
             }
+            else if(matrix[y][x] == 1.5) {
+                grassArr.push(new Grass(x*1, y*1, 1.5,matrix[x][y]));
+            }
             else if(matrix[y][x] == 2) {
                 xotakerArr.push(new Xotaker(x*1, y*1, 2,matrix[x][y]));
             }
+            else if(matrix[y][x] == 2.5) {
+                xotakerArr.push(new Xotaker(x*1, y*1, 2.5,matrix[x][y]));
+            }
             else if(matrix[y][x] == 3) {
                 gishatichArr.push(new Gishatich(x*1, y*1, 3,matrix[x][y]));
+            }
+            else if(matrix[y][x] == 3.5) {
+                gishatichArr.push(new Gishatich(x*1, y*1, 3.5,matrix[x][y]));
             }
             else if(matrix[y][x] == 4) {
                 alienArr.push(new Alien(x*1, y*1, 4,matrix[x][y]));
@@ -102,13 +111,13 @@ setInterval( function() {
        
       
    
-},500);
+},200);
 
 
 io.on('connection', function (socket) {
    
    setInterval( function() {
     io.sockets.emit('send matrix', matrix);
-},500);
+},100);
    
 });

@@ -2,8 +2,9 @@ Animal = require('./animal');
  
 module.exports = class Xotaker extends Animal {
    
-    constructor(x, y, index) {
+    constructor(x, y, index, ser) {
          super(x, y, index);
+         this.ser =(ser ==0)? "M": "F";
          this.energy = Math.round(Math.random() * 8);
          this.multiply = Math.round(Math.random() * 8);
          this.speed = 8;
@@ -26,8 +27,10 @@ module.exports = class Xotaker extends Animal {
     utel() {
         this.energy--;
         this.multiply++;
-      var vand1; 
-        vand1 = this.yntrelVandak(1);
+        var num  = [1,1.5];
+        var num_choice = num[Math.round(Math.random()*num.length)];
+        var vand1; 
+        vand1 = this.yntrelVandak(num_choice);
         var vand = vand1[Math.floor(Math.random() * vand1.length)];
         if (vand && this.multiply >= this.speed / 8) {
             this.energy += this.speed;
@@ -45,18 +48,25 @@ module.exports = class Xotaker extends Animal {
     }
 
     bazmanal() {
-        var vand1; 
-        vand1 = this.yntrelVandak(0);
-        var vand = vand1[Math.floor(Math.random() * vand1.length)];
-        if (vand && this.energy >= this.speed) {
-            this.energy = 1;
-            var newxotaker = new Xotaker(vand[0], vand[1], 2);
-            xotakerArr.push(newxotaker);
+        if(this.ser == "M"){ 
+            var Ffinder = this.yntrelVandak(this.index+0.5)
+            if(Ffinder){  
+                var vand1; 
+                vand1 = this.yntrelVandak(0);
+                var vand = vand1[Math.floor(Math.random() * vand1.length)];
+                if (vand && this.energy >= this.speed) {
+                    this.energy = 1;
+                    var newxotaker = new Xotaker(vand[0], vand[1], 2);
+                    xotakerArr.push(newxotaker);
+                }
+            }
+            
         }
+       
     }
 
     mahanal() {
-        if (this.energy >= this.speed / 4) {
+        if (this.energy <= -(this.speed / 4)) {
             matrix[this.y][this.x] = 0;
             for (var i in xotakerArr) {
                 if (xotakerArr[i].x == this.x && xotakerArr[i].y == this.y) {
