@@ -10,7 +10,9 @@ module.exports = class Gishatich extends Animal {
     }
     
   sharjvel() {
-        var vand = random(this.yntrelVandak(0));
+      var vand1; 
+        vand1 = this.yntrelVandak(0);
+        var vand = vand1[Math.floor(Math.random() * this.yntrelVandak(1).length)];
         if (vand && this.multiply >= this.speed / 2) {
             this.energy--;
             matrix[this.y][this.x] = 0;
@@ -21,7 +23,9 @@ module.exports = class Gishatich extends Animal {
 
     utel() {
         this.energy--;
-        var vand = random(this.yntrelVandak(2));
+         var vand1; 
+        vand1 = this.yntrelVandak(2);
+        var vand = vand1[Math.floor(Math.random() * vand1.length)];
         if (vand && this.multiply >= this.speed / 2) {
             this.energy += this.speed/2;
             matrix[this.y][this.x] = 0;
@@ -37,8 +41,10 @@ module.exports = class Gishatich extends Animal {
     }
 
     bazmanal() {
-        var vand = random(this.yntrelVandak(0));
-        if (vand && this.energy >= this.speed) {
+         var vand1; 
+        vand1 = this.yntrelVandak(0);
+        var vand = vand1[Math.floor(Math.random() * vand1.length)];
+        if (vand && this.energy >= this.speed*2) {
             this.energy = 1;
             var newgishatich = new Gishatich(vand[0], vand[1], 3);
             gishatichArr.push(newgishatich);
@@ -46,7 +52,7 @@ module.exports = class Gishatich extends Animal {
     }
 
     mahanal() {
-        if (this.energy <= -(this.speed / 2)) {
+        if (this.energy >=this.speed /4) {
             matrix[this.y][this.x] = 0;
             for (var i in gishatichArr) {
                 if (gishatichArr[i].x == this.x && gishatichArr[i].y == this.y) {

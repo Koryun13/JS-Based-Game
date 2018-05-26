@@ -5,9 +5,9 @@ module.exports = class Alien extends Animal {
     constructor(x, y, index) {
 
         super(x, y, index);
-        this.energy = Math.round(Math.random() * 20);
+        this.energy = Math.round(Math.random() * 10);
         this.speed = 24;
-        this.multiply = Math.round(Math.random() * 20);
+        this.multiply = Math.round(Math.random() *10);
         matrix[this.y][this.x] = this.index;
         
     }
@@ -26,7 +26,9 @@ module.exports = class Alien extends Animal {
         return found;
     }
         sharjvel() {
-            var vand = random(this.yntrelVandak(0));
+             var vand1; 
+        vand1 = this.yntrelVandak(0);
+        var vand = vand1[Math.floor(Math.random() * vand1.length)];
             if (vand && this.multiply >= this.speed / 4) {
                 this.energy--;
                 matrix[this.y][this.x] = 0;
@@ -37,8 +39,10 @@ module.exports = class Alien extends Animal {
 
         utel() {
             this.energy--;
-            var num =  random(1,4);
-            var vand = random(this.yntrelVandak(num));
+            var num =  Math.floor(Math.random()*5);
+             var vand1;
+                vand1 = this.yntrelVandak(num);
+                var vand = vand1[Math.floor(Math.random() * vand1.length)];
             if (vand && this.multiply >= this.speed / 2) {
                 this.energy += this.speed / 2;
                 matrix[this.y][this.x] = 0;
@@ -73,8 +77,10 @@ module.exports = class Alien extends Animal {
         }
 
         bazmanal() {
-            var vand = random(this.yntrelVandak(0));
-            if (vand && this.energy >= this.speed) {
+              var vand1; 
+        vand1 = this.yntrelVandak(0);
+        var vand = vand1[Math.floor(Math.random() * vand1.length)];
+            if (vand && this.energy >= this.speed*4) {
                 this.energy = 1;
                 var newalien = new Alien(vand[0], vand[1], 4);
                 alienArr.push(newalien);
@@ -82,7 +88,7 @@ module.exports = class Alien extends Animal {
         }
 
         mahanal() {
-            if (this.energy <= -(this.speed )) {
+            if (this.energy >= this.speed/6)  {
                 matrix[this.y][this.x] = 0;
                 for (var i in alienArr) {
                     if (alienArr[i].x == this.x && alienArr[i].y == this.y) {

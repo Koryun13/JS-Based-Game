@@ -35,7 +35,7 @@ function draw() {
                 fill("red");
             }
             else if(matrix[y][x] == 4){
-                fill("black ")
+                fill("black ");
             }
             rect(x * side, y * side, side, side);
         }
