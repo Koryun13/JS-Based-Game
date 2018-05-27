@@ -1,9 +1,8 @@
  Animal = require('./animal'); 
   
  module.exports = class Grass extends Animal {
-      constructor(x, y, index, ser)  { 
-        super(x, y, index);
-        this.ser =(ser ==0)? "M": "F";
+      constructor(x, y, index)  { 
+       super(x, y, index);
         this.multiply = Math.round(Math.random() * 8);
         this.speed = 8;
         matrix[this.y][this.x] = this.index;
@@ -26,7 +25,7 @@
     mul() {
         this.multiply++;
         var vand; 
-        if(this.ser == "M"){ 
+        if(this.index%2 == 0){ 
         var Ffinder = this.yntrelVandak(this.index+0.5)
         if(Ffinder){  
          vand = this.yntrelVandak(0);

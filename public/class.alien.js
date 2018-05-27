@@ -1,18 +1,18 @@
-Animal = require('./animal'); 
- 
+Animal = require('./animal');
+
 module.exports = class Alien extends Animal {
 
     constructor(x, y, index) {
 
         super(x, y, index);
         this.energy = Math.round(Math.random() * 10);
-        this.speed = 24;
-        this.multiply = Math.round(Math.random() *10);
+        this.speed = 40;
+        this.multiply = Math.round(Math.random() * 10);
         matrix[this.y][this.x] = this.index;
-        
+
     }
 
-     yntrelVandak(ch) {
+    yntrelVandak(ch) {
         var found = [];
         for (var i in this.directions) {
             var x = this.directions[i][0];
@@ -25,77 +25,78 @@ module.exports = class Alien extends Animal {
         }
         return found;
     }
-        sharjvel() {
-             var vand1; 
+    sharjvel() {
+        var vand1;
         vand1 = this.yntrelVandak(0);
         var vand = vand1[Math.floor(Math.random() * vand1.length)];
-            if (vand && this.multiply >= this.speed / 4) {
-                this.energy--;
-                matrix[this.y][this.x] = 0;
-                this.x = vand[0]; this.y = vand[1];
-                matrix[this.y][this.x] = 4;
-            }
-        }
-
-        utel() {
+        if (vand && this.multiply >= this.speed / 4) {
             this.energy--;
-            var num =  Math.floor(Math.random()*5);
-             var vand1;
-                vand1 = this.yntrelVandak(num);
-                var vand = vand1[Math.floor(Math.random() * vand1.length)];
-            if (vand && this.multiply >= this.speed / 2) {
-                this.energy += this.speed / 2;
-                matrix[this.y][this.x] = 0;
-                this.x = vand[0]; this.y = vand[1];
-                matrix[this.y][this.x] = 4;
+            matrix[this.y][this.x] = 0;
+            this.x = vand[0]; this.y = vand[1];
+            matrix[this.y][this.x] = 4;
+        }
+    }
 
-                if (num == 1) {
-                    for (var i in grassArr) {
-                        if (grassArr[i].x == this.x && grassArr[i].y == this.y) {
-                            grassArr.splice(i, 1);
-                        }
-                    }
-                }
-                if (num == 2) {
-                    for (var i in xotakerArr) {
-                        if (xotakerArr[i].x == this.x && xotakerArr[i].y == this.y) {
-                            xotakerArr.splice(i, 1);
-                        }
-                    }
-                    
-                }
-                if(num == 3){
-                    for(var i in gishatichArr ){
-                        if(gishatichArr[i].x == this.x && gishatichArr[i].y == this.y){
-                            gishatichArr.splice(i,1);
-                        }
+    utel() {
+        this.energy--;
+        var n = (Math.round(Math.random())) / 2;
+        var num = Math.floor(Math.random() * 5) + n;
+        var vand1;
+        vand1 = this.yntrelVandak(num);
+        var vand = vand1[Math.floor(Math.random() * vand1.length)];
+        if (vand && this.multiply >= this.speed / 2) {
+            this.energy += this.speed / 2;
+            matrix[this.y][this.x] = 0;
+            this.x = vand[0]; this.y = vand[1];
+            matrix[this.y][this.x] = 4;
+
+            if (num == 1 || num == 1.5) {
+                for (var i in grassArr) {
+                    if (grassArr[i].x == this.x && grassArr[i].y == this.y) {
+                        grassArr.splice(i, 1);
                     }
                 }
             }
-        
-            else this.sharjvel();
+            if (num == 2 || num == 2.5) {
+                for (var i in xotakerArr) {
+                    if (xotakerArr[i].x == this.x && xotakerArr[i].y == this.y) {
+                        xotakerArr.splice(i, 1);
+                    }
+                }
+
+            }
+            if (num == 3 || num == 3.5) {
+                for (var i in gishatichArr) {
+                    if (gishatichArr[i].x == this.x && gishatichArr[i].y == this.y) {
+                        gishatichArr.splice(i, 1);
+                    }
+                }
+            }
         }
 
-        bazmanal() {
-              var vand1; 
+        else this.sharjvel();
+    }
+
+    bazmanal() {
+        var vand1;
         vand1 = this.yntrelVandak(0);
         var vand = vand1[Math.floor(Math.random() * vand1.length)];
-            if (vand && this.energy >= this.speed*4) {
-                this.energy = 1;
-                var newalien = new Alien(vand[0], vand[1], 4);
-                alienArr.push(newalien);
-            }
+        if (vand && this.energy >= this.speed * 10) {
+            this.energy = 1;
+            var newalien = new Alien(vand[0], vand[1], 4);
+            alienArr.push(newalien);
         }
+    }
 
-        mahanal() {
-            if (this.energy >= this.speed/6)  {
-                matrix[this.y][this.x] = 0;
-                for (var i in alienArr) {
-                    if (alienArr[i].x == this.x && alienArr[i].y == this.y) {
-                         alienArr.splice(i, 1);
-                    }
+    mahanal() {
+        if (this.energy >= this.speed / 4) {
+            matrix[this.y][this.x] = 0;
+            for (var i in alienArr) {
+                if (alienArr[i].x == this.x && alienArr[i].y == this.y) {
+                    alienArr.splice(i, 1);
                 }
             }
         }
+    }
 
-    };
+};

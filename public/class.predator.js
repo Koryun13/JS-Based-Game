@@ -1,16 +1,17 @@
- Animal = require('./animal'); 
+Animal = require('./animal');
 module.exports = class Gishatich extends Animal {
     constructor(x, y, index) {
-       
+
         super(x, y, index);
+
         this.energy = Math.round(Math.random() * 16);
-        this.speed = 24;
+        this.speed = 16;
         this.multiply = Math.round(Math.random() * 16);
         matrix[this.y][this.x] = this.index;
     }
-    
-  sharjvel() {
-      var vand1; 
+
+    sharjvel() {
+        var vand1;
         vand1 = this.yntrelVandak(0);
         var vand = vand1[Math.floor(Math.random() * this.yntrelVandak(1).length)];
         if (vand && this.multiply >= this.speed / 2) {
@@ -23,11 +24,13 @@ module.exports = class Gishatich extends Animal {
 
     utel() {
         this.energy--;
-         var vand1; 
-        vand1 = this.yntrelVandak(2);
+        var num = [2, 2.5];
+        var num_choice = num[Math.round(Math.random() * num.length)];
+        var vand1;
+        vand1 = this.yntrelVandak(num_choice);
         var vand = vand1[Math.floor(Math.random() * vand1.length)];
         if (vand && this.multiply >= this.speed / 2) {
-            this.energy += this.speed/2;
+            this.energy += this.speed / 2;
             matrix[this.y][this.x] = 0;
             this.x = vand[0]; this.y = vand[1];
             matrix[this.y][this.x] = 3;
@@ -41,18 +44,23 @@ module.exports = class Gishatich extends Animal {
     }
 
     bazmanal() {
-         var vand1; 
-        vand1 = this.yntrelVandak(0);
-        var vand = vand1[Math.floor(Math.random() * vand1.length)];
-        if (vand && this.energy >= this.speed*2) {
-            this.energy = 1;
-            var newgishatich = new Gishatich(vand[0], vand[1], 3);
-            gishatichArr.push(newgishatich);
+        if (this.index % 2 == 0) {
+            var Ffinder = this.yntrelVandak(this.index + 0.5)
+            if (Ffinder) {
+                var vand1;
+                vand1 = this.yntrelVandak(0);
+                var vand = vand1[Math.floor(Math.random() * vand1.length)];
+                if (vand && this.energy >= this.speed * 2) {
+                    this.energy = 1;
+                    var newgishatich = new Gishatich(vand[0], vand[1], 3);
+                    gishatichArr.push(newgishatich);
+                }
+            }
         }
     }
 
     mahanal() {
-        if (this.energy >=this.speed /4) {
+        if (this.energy >= this.speed / 2) {
             matrix[this.y][this.x] = 0;
             for (var i in gishatichArr) {
                 if (gishatichArr[i].x == this.x && gishatichArr[i].y == this.y) {
